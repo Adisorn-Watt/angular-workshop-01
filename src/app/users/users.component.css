@@ -1,7 +1,12 @@
 .strikethrough {
   text-decoration: line-through;
+  color: red;
 }
 
 .normalText {
   text-decoration: none;
+}
+
+.borderofUser {
+  border: palevioletred;
 }
