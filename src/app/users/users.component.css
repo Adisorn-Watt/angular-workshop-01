@@ -3,6 +3,10 @@
   color: red;
 }
 
+.errorText {
+  color: red;
+}
+
 .normalText {
   text-decoration: none;
 }

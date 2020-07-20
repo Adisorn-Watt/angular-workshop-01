@@ -16,6 +16,7 @@ export class UsersComponent implements OnInit {
   lastName = '';
   fullName = '';
   users: Array<UserState> = []; //Array
+  errCheck:boolean = false;
   //show: boolean = true;
   //countAllUsers: number = 0;
   countStrikeThrough: number = 0;
@@ -58,6 +59,13 @@ export class UsersComponent implements OnInit {
   }
 
   saveData(): void {
+    // There's only empty, or is/are only space(s)
+    if (this.firstName === "" || /\s/.test(this.firstName)) {
+      this.errCheck = true;
+      return;
+    } 
+    // Normal case
+    this.errCheck = false
     this.fullName = `${this.firstName} ${this.lastName}`;
     // Append to list/array
     this.users.push({name: this.fullName, strikeThrough: false});

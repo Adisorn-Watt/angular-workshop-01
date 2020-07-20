@@ -1,3 +1,7 @@
+<div *ngIf="errCheck == true"> 
+	<h6 class="errorText">You must have First name!!</h6>
+</div>
+
 First name:
 <input 
 	(keyup)="inputFirstName($event)" 
@@ -24,11 +28,9 @@ Result = {{ firstName }} {{ lastName }}
 <br/>
 <br/>
 
-
-
 Count = {{ countStrikeThrough }} /{{ users.length }}
 
-
+<br/>
 <br/>
 
 <div *ngFor="let user of users;" class="borderofUser">
