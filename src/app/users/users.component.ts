@@ -12,7 +12,9 @@ export class UsersComponent implements OnInit {
   users = []; //Array
   show: boolean = true;
   countUsers: number = 0;
-  countCrossed: number = 0
+  countCrossed: number = 0;
+  checkingUser: boolean = false;
+  strike = {};
 
   inputYourName(event: any): void {
     this.firstName = event.target.value;
@@ -32,7 +34,18 @@ export class UsersComponent implements OnInit {
   }
 
   strikeThrough (): void {
+    /*if(this.checkingUser == true){
+      this.checkingUser = false;
+    }
 
+    if(this.checkingUser == false){
+      this.checkingUser = true;
+    }*/
+
+    this.strike = {
+      'strikethrough':this.checkingUser==true,
+      'normalText':this.checkingUser==false
+    }
   }
 
   constructor() { }
