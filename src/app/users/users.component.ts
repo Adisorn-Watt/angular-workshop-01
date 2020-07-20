@@ -5,7 +5,6 @@ type UserState = {
   strikeThrough: boolean;
 };
 
-
 @Component({
   selector: 'app-users',
   templateUrl: './users.component.html',
@@ -17,28 +16,13 @@ export class UsersComponent implements OnInit {
   fullName = '';
   users: Array<UserState> = []; //Array
   errCheck:boolean = false;
-  //show: boolean = true;
-  //countAllUsers: number = 0;
   countStrikeThrough: number = 0;
   state: boolean = false;
-  //strike = {};
 
   constructor() { }
 
   ngOnInit(): void {
   }
-
-  /*toggleState (index: number) {
-    if (this.users.indexOf(index) == -1)
-    this.state = !this.state;
-  }*/
-
-  /*selectClasses () {
-    return {
-      'strikethrough':this.state==true,
-      'normalText':this.state==false
-    }
-  }*/
 
   checkStrikeThrough (user: UserState): void {
     if (user.strikeThrough) {
@@ -60,7 +44,7 @@ export class UsersComponent implements OnInit {
 
   saveData(): void {
     // There's only empty, or is/are only space(s)
-    if (this.firstName === "" || /\s/.test(this.firstName)) {
+    if (this.firstName === "" || this.firstName == null) {
       this.errCheck = true;
       return;
     } 
@@ -70,21 +54,4 @@ export class UsersComponent implements OnInit {
     // Append to list/array
     this.users.push({name: this.fullName, strikeThrough: false});
   }
-
-  
-
-  //strikeThrough (): void {
-    /*if(this.checkingUser == true){
-      this.checkingUser = false;
-    }
-
-    if(this.checkingUser == false){
-      this.checkingUser = true;
-    }
-
-    this.strike = {
-      'strikethrough':this.checkingUser==true,
-      'normalText':this.checkingUser==false
-    }
-  }*/
 }
