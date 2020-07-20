@@ -1,0 +1,41 @@
+<h1 class="strikethrough">First name:</h1> 
+<input 
+	(keyup)="inputYourName($event)" 
+	(keyup.enter)="saveData()"
+/>
+{{ firstName }}
+<br/>
+
+Last name: 
+<input 
+  #lastname 
+  (keyup)="inputLastname(lastname.value)"
+  (keyup.enter)="saveData()" 
+/>
+{{ lastName }}
+<br/>
+<br/>
+
+
+<button (click)="saveData()">Save data</button>
+<br/>
+<br/>
+
+
+Count = 
+<!-- Count crossed -->
+{{ countCrossed }}
+/
+<!-- Count all -->
+{{ countUsers }}
+
+
+<br/>
+
+<ul *ngIf="show">
+	<li 
+		*ngFor="let user of users"
+		(click)="strikeThrough()">
+			{{ user }}
+	</li>
+</ul>
