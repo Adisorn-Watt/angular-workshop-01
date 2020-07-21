@@ -1,4 +1,4 @@
-<div *ngIf="errCheck == true"> 
+<!--<div *ngIf="errCheck == true"> 
 	<h6 class="errorText">You must have First name!!</h6>
 </div>
 
@@ -16,13 +16,37 @@ Last name:
   (keyup.enter)="saveData()" 
 />
 <br/>
+<br/>-->
+
+<form [formGroup]="loginForm" (ngSubmit)="saveData()">
+	First name:
+	<input formControlName="firstName" />
+	<div *ngIf="loginForm.controls.firstName.errors">
+		<div *ngIf="loginForm.controls.firstName.errors.required" class="errorText">
+			First name is required.
+		</div>
+	</div>
+	<br/>
+
+	Last name:
+	<input formControlName="lastName" />
+	<div *ngIf="loginForm.controls.lastName.errors">
+		<div *ngIf="loginForm.controls.lastName.errors.required" class="errorText">
+			Last name is required.
+		</div>
+	</div>
+	<br/>
+
+
+	<button>Save Data</button>
+	<br/>
+
+</form>
+
+<!--button (click)="saveData()">Save data</button>-->
 <br/>
 
-<button (click)="saveData()">Save data</button>
-<br/>
-<br/>
-
-Result = {{ firstName }} {{ lastName }}
+Result = {{ this.f.firstName.value }} {{ this.f.lastName.value }}
 <br/>
 <br/>
 
@@ -30,11 +54,11 @@ Count = {{ countStrikeThrough }} /{{ users.length }}
 <br/>
 <br/>
 
-<div *ngFor="let user of users;" class="borderofUser">
+<div *ngFor="let user of users;">
 	<h5
 		style="cursor: pointer;"
 		[ngClass]="{'strikethrough': user.strikeThrough}"
 		(click)="checkStrikeThrough(user)">
-			{{ user.name }}
+			{{ user.fullName }}
 	</h5>
 </div>
